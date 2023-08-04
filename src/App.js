@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useAuthContext } from './hooks/useAuthContext'
 
 // pages & components
 import Medicines from './pages/Medicines'
 
 function App() {
+  const { user } = useAuthContext()
 
   return (
     <div className="App">
@@ -17,6 +19,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      {user}
     </div>
   );
 }
