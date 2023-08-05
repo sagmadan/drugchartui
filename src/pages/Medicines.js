@@ -6,6 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import MedicineDetails from '../components/MedicineDetails'
+import MedicineForm from '../components/MedicineForm'
 
 const Medicines = () => {
     const {medicines, dispatch} = useMedicineContext()
@@ -35,6 +36,9 @@ const Medicines = () => {
 
     return (
         <div className="medicines">
+            <div>
+                {<MedicineForm/ >}
+            </div>
             {medicines && medicines.map((medicine) => (
                 <MedicineDetails key={medicine._id} medicine={medicine} />
             ))}
