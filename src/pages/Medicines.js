@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useEffect } from 'react'
 import { useLogout } from '../hooks/useLogout'
 import { useMedicineContext } from "../hooks/useMedicineContext"
@@ -32,7 +31,7 @@ const Medicines = () => {
         if (user) {
             fetchMedicines()
         }
-    }, [])
+    }, [dispatch, user])
 
     return (
         <div className="medicines">
