@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { useLogout } from '../hooks/useLogout'
 import { useMedicineContext } from "../hooks/useMedicineContext"
 import { useAuthContext } from "../hooks/useAuthContext"
 
@@ -10,11 +9,6 @@ import MedicineForm from '../components/MedicineForm'
 const Medicines = () => {
     const { medicines, dispatch } = useMedicineContext()
     const { user } = useAuthContext()
-    const { logout } = useLogout()
-
-    const handleLogOutClick = () => {
-        logout()
-    }
 
     useEffect(() => {
         const fetchMedicines = async () => {
@@ -47,9 +41,6 @@ const Medicines = () => {
                         <MedicineDetails key={medicine._id} medicine={medicine} />
                     ))}
                 </dl>
-            </div>
-            <div>
-                <button onClick={handleLogOutClick}>Logout</button>
             </div>
         </div >
 

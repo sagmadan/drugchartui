@@ -5,6 +5,7 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Medicines from './pages/Medicines'
+import Navbar from './components/Navbar'
 
 function App() {
   const { user } = useAuthContext()
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Navbar />
         <div className="pages">
           <Routes>
             <Route
