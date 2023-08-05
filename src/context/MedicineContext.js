@@ -4,7 +4,7 @@ export const MedicineContext = createContext()
 
 export const medicineReducer = (state, action) => {
   switch (action.type) {
-    case 'SET_MEDICINES': 
+    case 'SET_MEDICINES':
       return {
         medicines: action.payload
       }
@@ -23,8 +23,8 @@ export const MedicinesContextProvider = ({ children }) => {
   })
 
   return (
-    <MedicineContext.Provider value={{...state, dispatch}}>
-      { children }
+    <MedicineContext.Provider value={{ ...state, dispatch }}>
+      {children}
     </MedicineContext.Provider>
   )
 }

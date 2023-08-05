@@ -14,21 +14,21 @@ function App() {
       <BrowserRouter>
         <div className="pages">
           <Routes>
-            <Route 
-              path="/login" 
-              element={!user ? <Login /> : <Navigate to="/" />} 
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to="/" />}
             />
-            <Route 
-              path="/signup" 
-              element={!user ? <Signup /> : <Navigate to="/" />} 
+            <Route
+              path="/signup"
+              element={!user ? <Signup /> : <Navigate to="/" />}
             />
-            <Route 
-              path="/medicines" 
-              element={user ? <Medicines/ > : <Navigate to="/login" />} 
+            <Route
+              path="/medicines"
+              element={user ? <Medicines /> : <Navigate to="/login" />}
             />
-            <Route 
-              path="/" 
-              element={user ? <Navigate to="/medicines" /> : <Navigate to="/login" />} 
+            <Route
+              path="/"
+              element={user ? <Navigate to="/medicines" /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>
