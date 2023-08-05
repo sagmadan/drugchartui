@@ -1,15 +1,19 @@
 import { useState } from 'react'
 import { useEffect }from 'react'
+import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import MedicineDetails from '../components/MedicineDetails'
 
 const Medicines = () => {
     const [medicines, setMedicines] = useState(null);
+    const {user} = useAuthContext()
 
     useEffect(() => {
         const fetchMedicines = async () => {
-            const response = await fetch('/api/medicines')
+            const response = await fetch('/api/medicines', {
+                headers: {'Authorization': `Bearer ${user.token}`},
+            })
             console.log(response)
             const json = await response.json()
 
@@ -17,7 +21,9 @@ const Medicines = () => {
                 setMedicines(json)
             }
         }
-        fetchMedicines()
+        if (user) {
+            fetchMedicines()
+        }
     }, [])
 
     return (
