@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useEffect }from 'react'
+import { useLogout } from '../hooks/useLogout'
 import { useMedicineContext } from "../hooks/useMedicineContext"
 import { useAuthContext } from "../hooks/useAuthContext"
 
@@ -9,6 +10,11 @@ import MedicineDetails from '../components/MedicineDetails'
 const Medicines = () => {
     const {medicines, dispatch} = useMedicineContext()
     const {user} = useAuthContext()
+    const { logout } = useLogout()
+
+    const handleLogOutClick = () => {
+        logout()
+      }
 
     useEffect(() => {
         const fetchMedicines = async () => {
@@ -32,7 +38,11 @@ const Medicines = () => {
             {medicines && medicines.map((medicine) => (
                 <MedicineDetails key={medicine._id} medicine={medicine} />
             ))}
+            <div>
+                <button onClick={handleLogOutClick}>Logout</button>
+            </div>
         </div>
+        
     )
 }
 
