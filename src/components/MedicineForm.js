@@ -50,7 +50,7 @@ const MedicineForm = () => {
 
             <form onSubmit={handleSubmit}>
                 <h3 className="text-base font-semibold leading-7 text-gray-900">Add new medicine</h3>
-                <div className="mt-3 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-10">
+                <div className="mt-3 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-10">
 
                     <div className="sm:col-span-2 sm:col-start-1">
                         <label className="block text-sm font-medium leading-6 text-gray-900">Medicine name</label>
@@ -91,8 +91,9 @@ const MedicineForm = () => {
 
                     <div className="sm:col-span-2 flex justify-start items-end">
                         <button
-                            className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                            Add Medicine</button>
+                            className="mt-2 flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            Add Medicine
+                        </button>
                     </div>
                     {error && <div className="m:col-span-2 text-red-500">{error}</div>}
 

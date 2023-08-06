@@ -13,6 +13,7 @@ export const useLogout = () => {
     // dispatch logout action
     dispatch({ type: 'LOGOUT' })
     dispatchMedicines({ type: 'SET_MEDICINES', payload: null })
+    // sagar todo : can use navigate here to redirect to login page once logged out
   }
 
   return { logout }
