@@ -1,31 +1,11 @@
-import { useEffect } from 'react'
 import { useMedicineContext } from "../hooks/useMedicineContext"
-import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import MedicineDetails from '../components/MedicineDetails'
 import MedicineForm from '../components/MedicineForm'
 
 const Medicines = () => {
-    const { medicines, dispatch } = useMedicineContext()
-    const { user } = useAuthContext()
-
-    useEffect(() => {
-        const fetchMedicines = async () => {
-            const response = await fetch('/api/medicines', {
-                headers: { 'Authorization': `Bearer ${user.token}` },
-            })
-
-            const json = await response.json()
-
-            if (response.ok) {
-                dispatch({ type: 'SET_MEDICINES', payload: json })
-            }
-        }
-        if (user) {
-            fetchMedicines()
-        }
-    }, [dispatch, user])
+    const { medicines } = useMedicineContext()
 
     return (
         <div className="bg-gray-50 px-5 py-3">
