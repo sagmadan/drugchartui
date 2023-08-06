@@ -8,21 +8,13 @@ export const medicineReducer = (state, action) => {
   switch (action.type) {
     case 'SET_MEDICINES':
       return {
-        medicines: action.payload
+        medicinesMap: action.payload
       }
     case 'CREATE_MEDICINES':
+      const medObj = action.payload
+      state.medicinesMap.set(medObj._id, medObj);
       return {
-        medicines: [action.payload, ...state.medicines].sort((a, b) => {
-          const na = a.name.toLowerCase()
-          const nb = b.name.toLowerCase()
-          if (na < nb) {
-            return -1;
-          }
-          if (na > nb) {
-            return 1;
-          }
-          return 0;
-        })
+        medicinesMap: state.medicinesMap
       }
     default:
       return state
@@ -31,7 +23,7 @@ export const medicineReducer = (state, action) => {
 
 export const MedicinesContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(medicineReducer, {
-    medicines: null
+    medicinesMap: new Map()
   })
 
   const { user } = useAuthContext()
@@ -44,8 +36,10 @@ export const MedicinesContextProvider = ({ children }) => {
 
       const json = await response.json()
 
+      const medicinesIdToObjMap = new Map(json.map(medicine => [medicine._id, medicine]))
+
       if (response.ok) {
-        dispatch({ type: 'SET_MEDICINES', payload: json })
+        dispatch({ type: 'SET_MEDICINES', payload: medicinesIdToObjMap })
       }
     }
     if (user) {

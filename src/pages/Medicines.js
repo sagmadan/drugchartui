@@ -5,8 +5,7 @@ import MedicineDetails from '../components/MedicineDetails'
 import MedicineForm from '../components/MedicineForm'
 
 const Medicines = () => {
-    const { medicines } = useMedicineContext()
-
+    const { medicinesMap } = useMedicineContext()
     return (
         <div className="min-h-screen bg-gray-50 px-5 py-3">
             <div>
@@ -17,9 +16,11 @@ const Medicines = () => {
             </div>
             <div className="mt-6 border-t border-gray-200">
                 <dl className="divide-y divide-gray-200">
-                    {medicines && medicines.map((medicine) => (
-                        <MedicineDetails key={medicine._id} medicine={medicine} />
-                    ))}
+                    {medicinesMap && Array.from(medicinesMap)
+                        .sort((a, b) => a[1].name.localeCompare(b[1].name))
+                        .map(([key, value]) => (
+                            <MedicineDetails key={key} medicine={value} />
+                        ))}
                 </dl>
             </div>
         </div >
