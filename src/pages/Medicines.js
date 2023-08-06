@@ -8,7 +8,7 @@ const Medicines = () => {
     const { medicines } = useMedicineContext()
 
     return (
-        <div className="bg-gray-50 px-5 py-3">
+        <div className="min-h-screen bg-gray-50 px-5 py-3">
             <div>
                 {<MedicineForm />}
             </div>
