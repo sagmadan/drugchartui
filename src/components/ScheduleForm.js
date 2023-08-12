@@ -49,8 +49,6 @@ const ScheduleForm = () => {
             status: scheduleStatus.ACTIVE
         }
 
-        console.log(schedule)
-
         const response = await fetch('/api/schedules', {
             method: 'POST',
             body: JSON.stringify(schedule),
