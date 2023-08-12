@@ -1,4 +1,3 @@
-// Sagar pending
 import { useState } from "react"
 import { useMedicineContext } from "../hooks/useMedicineContext"
 import { useAuthContext } from '../hooks/useAuthContext'

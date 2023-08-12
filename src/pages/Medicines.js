@@ -24,7 +24,6 @@ const Medicines = () => {
                 </dl>
             </div>
         </div >
-
     )
 }
 
